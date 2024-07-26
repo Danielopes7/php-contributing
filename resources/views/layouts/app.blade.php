@@ -12,29 +12,23 @@
     @livewireStyles
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <a class="text-xl font-bold text-gray-800" href="{{ url('/') }}">Meu Projeto</a>
-                <div class="hidden md:flex space-x-4">
-                    <a class="text-gray-600 hover:text-gray-900" href="{{ url('/pedidos') }}">Pedidos</a>
-                    <!-- Adicione mais links conforme necessário -->
-                </div>
-                <div class="md:hidden">
-                    <button class="text-gray-600 focus:outline-none focus:text-gray-900">
-                        <!-- Ícone do menu responsivo -->
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow container mx-auto px-4 py-8">
-        @yield('content')
-    </main>
+    <div class="bg-ink-400 flex flex-col min-h-screen antialiased text-vanilla-300">
+        <header class="w-full py-4 border-b border-ink-200 bg-ink-400 border-black ">
+            <nav class="flex items-center justify-center flex-wrap">
+                <a href="/" class="flex items-center text-gray-700 font-bold">
+                    <!-- <img src="/_nuxt/gfi-logo-white.c30e7ffd.svg" alt="Good First Issue" class="h-12"> -->
+                     <span>Good first issues</span>
+                </a>
+                <span class="text-2xl cursor-pointer">
+                    <span class="font-normal ml-2 mr-1 text-slate">/</span>
+                    <span class="font-semibold text-juniper">PHP</span>
+                </span>
+            </nav>
+        </header>
+        <main class="flex flex-1">
+            @yield('content')
+        </main>
+    </div>
 
     <footer class="bg-white shadow-md py-4 mt-auto">
         <div class="container mx-auto text-center text-gray-600">
