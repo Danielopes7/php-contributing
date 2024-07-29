@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('repository_git_id');
             $table->string('language');
             $table->string('full_name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('stargazers_count');
             $table->integer('forks');
             $table->integer('open_issues');

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('html_url');
             $table->unsignedBigInteger('issue_id');
             $table->integer('number');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('user_login'); //Reference to the login field in the user array in the JSON response from the issues API.
-            $table->string('user_avatar_url'); //Reference to the avatar_url field in the user array in the JSON response from the issues API.
+            $table->string('user_avatar_url')->nullable(); //Reference to the avatar_url field in the user array in the JSON response from the issues API.
             $table->string('state');
             $table->integer('comments');
             $table->timestamp('created_at');
