@@ -32,8 +32,8 @@ class Issue extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function labels(): BelongsToMany
+    public function labels()
     {
-        return $this->belongsToMany(Label::class, 'github_issue_label');
+        return $this->belongsToMany(Label::class, 'issue_label');
     }
 }
