@@ -1,0 +1,14 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: max
+    paths:
+        - app
+        - database
+        - routes
+    excludes_analyse:
+        - vendor
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingVarTagTypehint: false
