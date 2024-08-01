@@ -7,8 +7,6 @@ use Github\ResultPager;
 use Github\Client;
 use App\Services\IssueService;
 
-
-
 class GitHubController extends Controller
 {
     protected $issueService;
@@ -27,7 +25,7 @@ class GitHubController extends Controller
         $repo = $client->api('repo')->show('Submitty', 'Submitty');
         dd($repo);
         $parameters = ['created:>2024-01-01 label:"good first issue" label:bug language:PHP is:open comments:<2'];
-        
+
         $issues = $pager->fetch($api, $method, $parameters);
         dd($issues);
         $teste = 0;
@@ -37,7 +35,7 @@ class GitHubController extends Controller
                 // Faça algo com cada issue
                 echo $issue['title'] . "\n";
             }
-        
+
             // Buscar a próxima página de resultados
             $issues = $pager->fetchNext();
             $teste == $teste + 1;

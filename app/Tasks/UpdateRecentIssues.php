@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Tasks;
+
 use App\Services\IssueService;
 
 class UpdateRecentIssues
@@ -12,5 +14,5 @@ class UpdateRecentIssues
     public function __invoke()
     {
         $this->issueService->processUpdateSchedule();
-    }   
+    }
 }

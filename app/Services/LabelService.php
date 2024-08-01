@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Label;
@@ -17,7 +18,7 @@ class LabelService
     public function mountLabelsData(array $labels): array
     {
         $labelsList = [];
-        foreach ($labels as $label){
+        foreach ($labels as $label) {
             $labelsList[] = $label['name'];
         }
 
@@ -33,5 +34,4 @@ class LabelService
             Log::error('Error deleting all labels: ' . $e->getMessage());
         }
     }
-
 }

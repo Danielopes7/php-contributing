@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Repository;
@@ -31,16 +32,15 @@ class RepositoryService
 
     public function getRepositoryFromGit(string $owner = '', string $repo_name = '')
     {
-        if (!empty($owner) && !empty($repo_name)){
+        if (!empty($owner) && !empty($repo_name)) {
             return $this->client->api('repo')->show($owner, $repo_name);
         }
         return [];
-        
     }
     public function mountRepositoryDataFromUrl(string $url)
     {
         $repository = $this->getRepositoryFromGit(...$this->getOwnerRepoFromUrl($url));
-        if (isset($repository)){
+        if (isset($repository)) {
             return [
                 "repository_git_id" => $repository['id'],
                 "language" => $repository['language'],
@@ -51,11 +51,12 @@ class RepositoryService
                 "open_issues" => $repository['open_issues'],
                 "watchers" => $repository['watchers']
             ];
-        }  
+        }
         return [];
     }
 
-    protected function getOwnerRepoFromUrl(string $url): array {
+    protected function getOwnerRepoFromUrl(string $url): array
+    {
         if (preg_match('/repos\/([^\/]+)\/([^\/]+)/', $url, $matches)) {
             $owner = $matches[1];
             $repo = $matches[2];

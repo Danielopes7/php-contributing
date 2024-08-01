@@ -21,15 +21,14 @@ class IssueService
         $this->client = $client;
     }
 
-    public function index(){
-
+    public function index()
+    {
     }
     public function processUpdateSchedule()
     {
         $parameters = ['created:>2024-01-01 label:"good first issue" label:bug language:PHP is:open comments:<2'];
         $issueList = $this->getIssueFromGit($parameters);
         $this->execSchedule($issueList);
-
     }
     public function getIssueFromGit(array $parameters): array
     {
@@ -40,16 +39,16 @@ class IssueService
         } catch (\Exception $e) {
             // Log the error or handle it as needed
             Log::error('Error fetching issue from GitHub: ' . $e->getMessage());
-    
+
             // Optionally, you can return a default value or throw a custom exception
             throw new \RuntimeException('Failed to fetch issue from GitHub', 0, $e);
             return [];
         }
     }
-    
+
     public function createIssueWithDetails(array $issueData, array $repositoryData, array $labelsData): void
     {
-        try{
+        try {
             // Use the RepositoryService to create or find the repository
             $repository = $this->repositoryService->createIfNotExists($repositoryData);
 
@@ -69,7 +68,7 @@ class IssueService
 
     public function execSchedule(array $issue)
     {
-        try{
+        try {
             return DB::transaction(function () use ($issue) {
                 // Remove all data from the issue, repository, labels, and issue_label tables
                 $this->deleteAll();
@@ -77,7 +76,7 @@ class IssueService
                 $this->labelService->deleteAll();
                 DB::table('issue_label')->delete(); // Remove all data from the pivot table
 
-                foreach ($issue['items'] as $issue){
+                foreach ($issue['items'] as $issue) {
                     $issueData = $this->mountIssueData($issue);
                     $labelsData = $this->labelService->mountLabelsData($issue['labels']);
                     $repositoryData = $this->repositoryService->mountRepositoryDataFromUrl($issue['repository_url']);
@@ -92,8 +91,8 @@ class IssueService
 
     protected function mountIssueData(array $issue): array
     {
-        try{
-            if (!empty($issue)){
+        try {
+            if (!empty($issue)) {
                 return [
                     "url" => $issue['url'],
                     "html_url" => $issue['html_url'],
@@ -110,7 +109,7 @@ class IssueService
                     "body" => $issue['body'],
                 ];
             }
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error('Error to mount issue array: ' . $e->getMessage());
             return [];
         }

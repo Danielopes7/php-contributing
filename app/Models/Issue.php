@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class Issue extends Model
     protected $dates = [
         'created_at', 'updated_at', 'closed_at'
     ];
-    
+
     /**
      * Get the repository that owns the issue.
      *
