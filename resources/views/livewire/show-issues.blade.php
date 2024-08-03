@@ -6,17 +6,37 @@
             <p class="text-sm"> Good First Issue curates easy pickings from popular open-source projects, and helps you make your first contribution to open-source. </p>
         </div>
         <div class="pt-6">
-            <h3 class="section-heading">Browse by type of issue</h3>
+            <h4 class="section-heading font-bold">Browse</h4>
+            <h3 class="section-heading m-4">by type of issue</h3>
             <div>
-                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-juniper group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
-                    Bug 
+                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                🐛 Bug 
                     <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
                 </button>
-                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-juniper group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
-                    Enhancement 
+                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                ✨ Enhancement 
                 </button>
-                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-juniper group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
-                    Fix 
+                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                🔧 Fix 
+                </button>
+                <button wire:click="reloadIssues('develop')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                👨‍💻 Develop 
+                </button>
+                <button wire:click="reloadIssues('help')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                🤔 Help
+                </button>
+            </div>
+            <h3 class="section-heading m-4">by type of project</h3>
+            <div>
+                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                😃 Small 
+                    <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
+                </button>
+                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                😎 Medium 
+                </button>
+                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                🤑 Big 
                 </button>
             </div>
         </div>
@@ -31,17 +51,17 @@
     </section>
     <div class="p-6 w-full">
         @foreach($issues as $issue)
-            <div id="issue-{{ $issue->issue_id }}" class="border-black select-none border w-full rounded-md mb-4 cursor-pointer hover:bg-neutral-200 group">
+            <div id="issue-{{ $issue->issue_id }}" class="border-black select-none border w-full rounded-md mb-4 hover:border-white group">
             <div class="px-5 py-3">
                 <div class="flex flex-row">
-                    <a title="{{ $issue->repository->full_name }}" href="https://github.com/{{ $issue->repository->full_name }}" target="_blank" rel="noopener noreferrer" class="text-md font-semibold group-hover:text-juniper text-gray-500 hover:bg-white">{{ $issue->repository->full_name }}</a>
+                    <a title="{{ $issue->repository->full_name }}" href="https://github.com/{{ $issue->repository->full_name }}" target="_blank" rel="noopener noreferrer" class="text-md font-semibold text-gray-500 hover:text-gray-700 hover:underline">{{ $issue->repository->full_name }}</a>
                     <span class="flex-1"></span>
                     <div class="mr-4">
                         <span class="text-vanilla-400">💬 comments: </span>{{ $issue->comments }}
                     </div>
                 </div>
                 <div class="flex flex-row">
-                    <a title="{{ $issue->title }}" href="{{ $issue->html_url }}" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold group-hover:text-juniper hover:bg-white">{{ $issue->title }}</a>
+                    <a title="{{ $issue->title }}" href="{{ $issue->html_url }}" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold text-white hover:text-blue-900 hover:underline">{{ $issue->title }}</a>
                     <span class="flex-1"></span>
                 </div>
                 <div class="flex-row flex text-sm py-1 overflow-auto">

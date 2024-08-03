@@ -11,8 +11,8 @@
 
     @livewireStyles
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100">
-    <div class="bg-ink-400 flex flex-col min-h-screen antialiased text-vanilla-300">
+<body class="flex flex-col min-h-screen">
+    <div class="bg-ink-400 flex flex-col min-h-screen antialiased text-white">
         <header class="w-full py-4 border-b border-ink-200 bg-ink-400 border-black ">
             <nav class="flex items-center justify-center flex-wrap">
                 <a href="/" class="flex items-center text-gray-700 font-bold">
