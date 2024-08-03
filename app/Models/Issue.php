@@ -23,7 +23,7 @@ class Issue extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function repository(): BelongsTo
+    public function repository()
     {
         return $this->belongsTo(Repository::class);
     }
