@@ -17,8 +17,9 @@ class GitHubController extends Controller
 
     public function searchIssues(Client $client)
     {
-        $this->issueService->processUpdateSchedule();
+        return view('index');
         dd('teste');
+        $this->issueService->processUpdateSchedule();
         $pager = new ResultPager($client, 3);
         $api = $client->search();
         $method = 'issues';

@@ -21,8 +21,14 @@ class IssueService
         $this->client = $client;
     }
 
-    public function index()
+    public function index(string $label = '')
     {
+        $filteredIssues = Issue::with(['repository', 'labels'])
+        ->whereHas('labels', function ($query) use ($label){
+            $query->where('name', 'like', $label); // Adjust the field and value as needed
+        })->get();
+        $issue = Issue::with('repository','labels')->get();
+        return ($filteredIssues);
     }
     public function processUpdateSchedule()
     {
