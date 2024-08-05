@@ -21,13 +21,21 @@ class IssueService
         $this->client = $client;
     }
 
-    public function index(string $label = '')
-    {
-        $filteredIssues = Issue::with(['repository', 'labels'])
-        ->whereHas('labels', function ($query) use ($label){
-            $query->where('name', 'like', '%' . $label . '%'); // Adjust the field and value as needed
-        })->get();
-        $issue = Issue::with('repository','labels')->get();
+    public function index(array $filters_label = [], string $type_project = null)
+    {   
+        $query = Issue::select('issues.*')
+        ->join('issue_label', 'issues.id', '=', 'issue_label.issue_id')
+        ->join('labels', 'labels.id', '=', 'issue_label.label_id')
+        ->join('repositories', 'repositories.id', '=', 'issues.repository_id');
+        if (!empty($filters_label)) {
+            $query->whereIn('labels.name', $filters_label)
+                ->havingRaw('COUNT(DISTINCT labels.name) = ?', [count($filters_label)]);
+        }
+        if (!empty($star_num)) {
+            $query->where('stargazers_count', '>=' , $star_num);
+        }
+        $filteredIssues = $query->groupBy('issues.id')
+            ->get();
         return ($filteredIssues);
     }
     public function processUpdateSchedule()

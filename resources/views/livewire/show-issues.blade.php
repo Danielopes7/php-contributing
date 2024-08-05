@@ -9,20 +9,20 @@
             <h4 class="section-heading font-bold">Browse</h4>
             <h3 class="section-heading m-4">by type of issue</h3>
             <div>
-                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('bug', $filters_label)) border-white @endif">
                 🐛 Bug 
                     <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
                 </button>
-                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('enhancement', $filters_label)) border-white @endif">
                 ✨ Enhancement 
                 </button>
-                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('fix', $filters_label)) border-white @endif">
                 🔧 Fix 
                 </button>
-                <button wire:click="reloadIssues('develop')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssues('develop')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('develop', $filters_label)) border-white @endif">
                 👨‍💻 Develop 
                 </button>
-                <button wire:click="reloadIssues('help')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssues('help')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('help', $filters_label)) border-white @endif">
                 🤔 Help
                 </button>
             </div>
@@ -87,7 +87,7 @@
                 <div class="flex text-sm py-1 font-mono text-vanilla-400 flex-wrap">
                     @foreach($issue->labels as $label)
                         <div class="mr-2 mt-2">
-                            <span class="hidden md:inline text-sm border px-3 py-1 ml-2 rounded-full font-semibold text-vanilla-200">{{ $label->name }}</span>
+                            <span class="hidden md:inline text-sm border px-3 py-1 ml-2 rounded-full font-semibold text-vanilla-200 @if(in_array($label->name, $filters_label)) bg-white text-black @endif">{{ $label->name }}</span>
                         </div>
                     @endforeach
                 </div>
