@@ -21,7 +21,7 @@ class IssueService
         $this->client = $client;
     }
 
-    public function index(array $filters_label = [], string $type_project = null)
+    public function index(array $filters_label = [], string $filter_size = null)
     {   
         $query = Issue::select('issues.*')
         ->join('issue_label', 'issues.id', '=', 'issue_label.issue_id')
@@ -29,10 +29,13 @@ class IssueService
         ->join('repositories', 'repositories.id', '=', 'issues.repository_id');
         if (!empty($filters_label)) {
             $query->whereIn('labels.name', $filters_label)
-                ->havingRaw('COUNT(DISTINCT labels.name) = ?', [count($filters_label)]);
+            ->havingRaw('COUNT(DISTINCT labels.name) = ?', [count($filters_label)]);
         }
-        if (!empty($star_num)) {
-            $query->where('stargazers_count', '>=' , $star_num);
+        
+        $array_size = $this->repositoryService->metricsSizeProject($filter_size);
+        if (!empty($array_size)) {
+            $query->whereBetween('stargazers_count', [$array_size['stargazers_count_ini'], $array_size['stargazers_count_end']])
+                ->whereBetween('forks', [$array_size['forks_count_ini'], $array_size['forks_count_end']]);
         }
         $filteredIssues = $query->groupBy('issues.id')
             ->get();

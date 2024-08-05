@@ -28,14 +28,14 @@
             </div>
             <h3 class="section-heading m-4">by type of project</h3>
             <div>
-                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssuesBySize('small')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'small') border-white @endif">
                 😃 Small 
                     <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
                 </button>
-                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button  wire:click="reloadIssuesBySize('medium')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'medium') border-white @endif">
                 😎 Medium 
                 </button>
-                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm">
+                <button wire:click="reloadIssuesBySize('big')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'big') border-white @endif">
                 🤑 Big 
                 </button>
             </div>
@@ -59,6 +59,19 @@
                     <div class="mr-4">
                         <span class="text-vanilla-400">💬 comments: </span>{{ $issue->comments }}
                     </div>
+                    @if (!empty($filter_size)) 
+                    <div class="mr-4">
+                        <span class="text-vanilla-400">
+                            @if ($filter_size == 'small') 
+                                😃
+                            @elseif ($filter_size == 'medium')
+                                😎
+                            @else
+                                🤑
+                            @endif
+                        </span>
+                    </div>
+                    @endif
                 </div>
                 <div class="flex flex-row">
                     <a title="{{ $issue->title }}" href="{{ $issue->html_url }}" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold text-white hover:text-blue-900 hover:underline">{{ $issue->title }}</a>

@@ -74,4 +74,33 @@ class RepositoryService
             Log::error('Error deleting all repository: ' . $e->getMessage());
         }
     }
+
+    public function metricsSizeProject(mixed $type_size)
+    {
+        if ($type_size == 'small'){
+            return [
+                "stargazers_count_ini" => 0,
+                "stargazers_count_end" => 50,
+                "forks_count_ini" => 0,
+                "forks_count_end" => 10,
+            ];
+        }
+        if ($type_size == 'medium'){
+            return [
+                "stargazers_count_ini" => 50,
+                "stargazers_count_end" => 500,
+                "forks_count_ini" => 10,
+                "forks_count_end" => 100,
+            ];
+        }
+        if ($type_size == 'big'){
+            return [
+                "stargazers_count_ini" => 500,
+                "stargazers_count_end" => 999999999,
+                "forks_count_ini" => 100,
+                "forks_count_end" => 999999999,
+            ];
+        }
+        return [];
+    }
 }

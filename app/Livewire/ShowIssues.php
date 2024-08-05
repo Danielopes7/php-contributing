@@ -9,6 +9,7 @@ class ShowIssues extends Component
 {
     public $issues;
     public array $filters_label;
+    public $filter_size;
 
     public function mount(IssueService $issueService)
     {
@@ -26,7 +27,12 @@ class ShowIssues extends Component
         ? array_diff($this->filters_label, [$event])
         : array_merge($this->filters_label, [$event]);
 
-        $this->issues = $issueService->index($this->filters_label);
+        $this->issues = $issueService->index($this->filters_label, $this->filter_size);
+    }
+    public function reloadIssuesBySize($event, IssueService $issueService)
+    {
+        $this->filter_size = $this->filter_size == $event ? '' : $event;
+        $this->issues = $issueService->index($this->filters_label, $this->filter_size);
     }
 }
 
