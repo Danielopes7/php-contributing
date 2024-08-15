@@ -20,7 +20,7 @@ services:
     networks:
       - sail
     depends_on:
-      - pgsql
+      - mysql
   mysql:
       image: 'mysql/mysql-server:8.0'
       ports:
