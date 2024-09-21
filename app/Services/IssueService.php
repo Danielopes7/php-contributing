@@ -43,7 +43,7 @@ class IssueService
     }
     public function processUpdateSchedule()
     {
-        $parameters = ['created:>2024-01-01 label:"good first issue" label:bug language:PHP is:open comments:<2'];
+        $parameters = ['created:>2024-07-01 label:"good first issue" language:PHP is:open'];
         $issueList = $this->getIssueFromGit($parameters);
         $this->execSchedule($issueList);
     }
@@ -51,7 +51,7 @@ class IssueService
     {
         try {
             // Mount the request
-            $pager = new ResultPager($this->client, 4);
+            $pager = new ResultPager($this->client, 30);
             return $pager->fetch($this->client->search(), $this->method, $parameters);
         } catch (\Exception $e) {
             // Log the error or handle it as needed

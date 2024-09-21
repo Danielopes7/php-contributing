@@ -30,11 +30,11 @@
         </main>
     </div>
 
-    <footer class="bg-white shadow-md py-4 mt-auto">
+    <!-- <footer class="bg-white shadow-md py-4 mt-auto">
         <div class="container mx-auto text-center text-gray-600">
             <p>&copy; {{ date('Y') }} Meu Projeto. Todos os direitos reservados.</p>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="{{ asset('js/app.js') }}"></script>
     @livewireScripts

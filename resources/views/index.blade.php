@@ -2,7 +2,7 @@
 
 @extends('layouts.app')
 
-@section('title', 'Lista de Pedidos')
+@section('title', 'PHP contributing')
 
 @section('content')
     <livewire:show-issues/>
