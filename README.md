@@ -22,10 +22,12 @@ PHP Contributing is designed to help new contributors find beginner-friendly iss
 1. Clone the repository:
    ```sh
    git clone https://github.com/Danielopes7/php-contributing.git
+   ```
+   ```sh
    cd php-contributing
+   ```
 
    Copy the example environment file and set up the environment variables:
-   ```
 2. **Copy the example environment file and set up the environment variables:**
 
    ```sh
@@ -45,10 +47,17 @@ PHP Contributing is designed to help new contributors find beginner-friendly iss
 
    ```sh
    ./vendor/bin/sail up
+   ```
+   ```sh
    ./vendor/bin/sail artisan key:generate
+   ```
+   ```sh
    ./vendor/bin/sail artisan migrate
-
+   ```
+    ```sh
    ./vendor/bin/sail npm install
+   ```
+   ```sh
    ./vendor/bin/sail npm run dev
    ```
    Visit http://localhost to see the application in action.
