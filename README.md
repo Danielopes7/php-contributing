@@ -1,4 +1,4 @@
-# PHP Contributing
+# PHP Contributing [WIP]
 
 Welcome to the PHP Contributing project! This project aims to provide a friendly way to find new open source tasks to contribute to.
 
