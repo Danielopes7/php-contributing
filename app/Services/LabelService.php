@@ -10,8 +10,8 @@ class LabelService
     public function createIfNotExists(string $labelName)
     {
         return Label::firstOrCreate(
-            ['name' => $labelName], // Condition to check for existence
-            ['name' => $labelName] // Attributes to set when creating a new record
+            ['name' => $labelName],
+            ['name' => $labelName]
         );
     }
 

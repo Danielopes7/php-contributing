@@ -25,9 +25,8 @@ class RepositoryService
     public function createIfNotExists(array $repositoryData)
     {
         return Repository::firstOrCreate(
-            ['repository_git_id' => $repositoryData['repository_git_id']], // Condition to check for existence
-            $repositoryData // Attributes to set when creating a new record
-        );
+            ['repository_git_id' => $repositoryData['repository_git_id']],
+            $repositoryData
     }
 
     public function getRepositoryFromGit(string $owner = '', string $repo_name = '')

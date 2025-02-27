@@ -51,14 +51,12 @@ class IssueService
     public function getIssueFromGit(array $parameters): array
     {
         try {
-            // Mount the request
             $pager = new ResultPager($this->client, 30);
             return $pager->fetch($this->client->search(), $this->method, $parameters);
         } catch (\Exception $e) {
-            // Log the error or handle it as needed
+
             Log::error('Error fetching issue from GitHub: ' . $e->getMessage());
 
-            // Optionally, you can return a default value or throw a custom exception
             throw new \RuntimeException('Failed to fetch issue from GitHub', 0, $e);
             return [];
         }
@@ -67,19 +65,15 @@ class IssueService
     public function createIssueWithDetails(array $issueData, array $repositoryData, array $labelsData): void
     {
         try {
-            // Use the RepositoryService to create or find the repository
             $repository = $this->repositoryService->createIfNotExists($repositoryData);
 
-            // Create the issue
             $issue = Issue::create(array_merge($issueData, ['repository_id' => $repository->id]));
 
-            // Attach labels to the issue using LabelService
             foreach ($labelsData as $labelData) {
                 $label = $this->labelService->createIfNotExists($labelData);
                 $issue->labels()->attach($label);
             }
         } catch (\Exception $e) {
-            // Log the error or handle it as needed
             Log::error('Error creating issue with details: ' . $e->getMessage());
         }
     }
@@ -88,11 +82,10 @@ class IssueService
     {
         try {
             return DB::transaction(function () use ($issue) {
-                // Remove all data from the issue, repository, labels, and issue_label tables
                 $this->deleteAll();
                 $this->repositoryService->deleteAll();
                 $this->labelService->deleteAll();
-                DB::table('issue_label')->delete(); // Remove all data from the pivot table
+                DB::table('issue_label')->delete();
 
                 foreach ($issue['items'] as $issue) {
                     $issueData = $this->mountIssueData($issue);
@@ -102,7 +95,6 @@ class IssueService
                 }
             });
         } catch (\Exception $e) {
-            // Log the error or handle it as needed
             Log::error('Error exec schedule: ' . $e->getMessage());
         }
     }
