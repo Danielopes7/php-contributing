@@ -43,7 +43,8 @@ class IssueService
     }
     public function processUpdateSchedule()
     {
-        $parameters = ['created:>2024-07-01 label:"good first issue" language:PHP is:open'];
+        $threeMonthsAgo = date('Y-m-d', strtotime('-3 months'));
+        $parameters = ['created:>' . $threeMonthsAgo . ' label:"good first issue" language:PHP is:open'];
         $issueList = $this->getIssueFromGit($parameters);
         $this->execSchedule($issueList);
     }
