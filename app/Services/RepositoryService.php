@@ -27,6 +27,7 @@ class RepositoryService
         return Repository::firstOrCreate(
             ['repository_git_id' => $repositoryData['repository_git_id']],
             $repositoryData
+        );
     }
 
     public function getRepositoryFromGit(string $owner = '', string $repo_name = '')
