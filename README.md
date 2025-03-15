@@ -1,5 +1,7 @@
 # PHP Contributing [WIP]
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6bc3be52-8269-44f7-8caf-67b533b8628e" alt="golang">
+</div>
 Welcome to the PHP Contributing project! This project aims to provide a friendly way to find new open source tasks to contribute to.
 
 ## Table of Contents
