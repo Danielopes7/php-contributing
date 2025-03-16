@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Meu Projeto Laravel')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
   @vite('resources/css/app.css')
 
     @livewireStyles
@@ -15,13 +15,9 @@
     <div class="bg-ink-400 flex flex-col min-h-screen antialiased text-white">
         <header class="w-full py-4 border-b border-ink-200 bg-ink-400 border-black ">
             <nav class="flex items-center justify-center flex-wrap">
-                <a href="/" class="flex items-center text-gray-700 font-bold">
-                    <!-- <img src="/_nuxt/gfi-logo-white.c30e7ffd.svg" alt="Good First Issue" class="h-12"> -->
-                     <span>Good first issues</span>
-                </a>
-                <span class="text-2xl cursor-pointer">
-                    <span class="font-normal ml-2 mr-1 text-slate">/</span>
-                    <span class="font-semibold text-juniper">PHP</span>
+                    <img src="{{ asset('images/logo.png') }}" width="80" height="80">
+                    <span class="text-2xl">
+                    <span class="font-semibold text-juniper"> PHP Contributing</span>
                 </span>
             </nav>
         </header>

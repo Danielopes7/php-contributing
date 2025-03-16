@@ -2,40 +2,40 @@
 
         <section class="masthead font-sans pt-6 border-r border-black px-6 text-vanilla-300 flex-none w-full md:max-w-sm">
         <div>
-            <h3 class="section-heading">About</h3>
-            <p class="text-sm"> PHP Good First Issue curates beginner-friendly tasks from PHP open-source projects, making it easier for you to make your first contribution to the PHP community. </p>
+            <h3 class="section-heading font-bold">About</h3>
+            <p class="text-sm"> PHP contributing curates beginner-friendly tasks from PHP open-source projects, making it easier for you to make your first contribution to the PHP community. </p>
         </div>
         <div class="pt-6">
             <h4 class="section-heading font-bold">Browse</h4>
             <h3 class="section-heading m-4">by type of issue</h3>
             <div>
-                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('bug', $filters_label)) border-white @endif">
+                <button wire:click="reloadIssues('bug')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('bug', $filters_label)) @endif">
                 🐛 Bug 
                     <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
                 </button>
-                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('enhancement', $filters_label)) border-white @endif">
+                <button  wire:click="reloadIssues('enhancement')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('enhancement', $filters_label)) @endif">
                 ✨ Enhancement 
                 </button>
-                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('fix', $filters_label)) border-white @endif">
+                <button wire:click="reloadIssues('fix')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('fix', $filters_label)) @endif">
                 🔧 Fix 
                 </button>
-                <button wire:click="reloadIssues('develop')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('develop', $filters_label)) border-white @endif">
+                <button wire:click="reloadIssues('develop')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('develop', $filters_label)) @endif">
                 👨‍💻 Develop 
                 </button>
-                <button wire:click="reloadIssues('help')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('help', $filters_label)) border-white @endif">
+                <button wire:click="reloadIssues('help')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if(in_array('help', $filters_label)) @endif">
                 🤔 Help
                 </button>
             </div>
             <h3 class="section-heading m-4">by type of project</h3>
             <div>
-                <button wire:click="reloadIssuesBySize('small')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'small') border-white @endif">
+                <button wire:click="reloadIssuesBySize('small')" id="small" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'small') @endif">
                 😃 Small 
                     <!-- TODO <span class="text-vanilla-400 group-hover:text-juniper">× 79</span> -->
                 </button>
-                <button  wire:click="reloadIssuesBySize('medium')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'medium') border-white @endif">
+                <button  wire:click="reloadIssuesBySize('medium')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'medium') @endif">
                 😎 Medium 
                 </button>
-                <button wire:click="reloadIssuesBySize('big')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'big') border-white @endif">
+                <button wire:click="reloadIssuesBySize('big')" class="border-slate border-black hover:text-juniper hover:border-white group mx-1 border px-2 py-1 inline-block rounded-sm my-1 text-sm @if ($filter_size == 'big') @endif">
                 🤑 Big 
                 </button>
             </div>
