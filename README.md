@@ -51,10 +51,10 @@ PHP Contributing is designed to help new contributors find beginner-friendly iss
 6. **Install front-end dependencies and start the development environment:**
 
     ```sh
-   php npm install
+   npm install
    ```
    ```sh
-   php npm run dev
+   npm run dev
    ```
 6. **Start the Laravel development server:**
    ```sh
