@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IssueController;
-use GrahamCampbell\GitHub\Facades\GitHub;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IssueController::class, 'index'])->name('issues');

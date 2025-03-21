@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
@@ -11,11 +11,11 @@ class Issue extends Model
 
     protected $fillable = [
         'url', 'repository_id', 'html_url', 'issue_id', 'number', 'title', 'user_login', 'user_avatar_url',
-        'state', 'comments', 'created_at', 'updated_at', 'closed_at', 'body'
+        'state', 'comments', 'created_at', 'updated_at', 'closed_at', 'body',
     ];
 
     protected $dates = [
-        'created_at', 'updated_at', 'closed_at'
+        'created_at', 'updated_at', 'closed_at',
     ];
 
     /**

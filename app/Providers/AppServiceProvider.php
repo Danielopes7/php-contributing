@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use GrahamCampbell\GitHub\GitHubManager;
 
 class AppServiceProvider extends ServiceProvider
 {

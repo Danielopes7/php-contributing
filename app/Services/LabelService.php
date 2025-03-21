@@ -31,7 +31,7 @@ class LabelService
             Label::query()->delete();
             Log::info('All labels have been successfully deleted.');
         } catch (\Exception $e) {
-            Log::error('Error deleting all labels: ' . $e->getMessage());
+            Log::error('Error deleting all labels: '.$e->getMessage());
         }
     }
 }

@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->unsignedBigInteger('repository_id'); //Foreign key to repositories
+            $table->unsignedBigInteger('repository_id'); // Foreign key to repositories
             $table->string('html_url');
             $table->unsignedBigInteger('issue_id');
             $table->integer('number');
             $table->string('title')->nullable();
-            $table->string('user_login'); //Reference to the login field in the user array in the JSON response from the issues API.
-            $table->string('user_avatar_url')->nullable(); //Reference to the avatar_url field in the user array in the JSON response from the issues API.
+            $table->string('user_login'); // Reference to the login field in the user array in the JSON response from the issues API.
+            $table->string('user_avatar_url')->nullable(); // Reference to the avatar_url field in the user array in the JSON response from the issues API.
             $table->string('state');
             $table->integer('comments');
             $table->timestamp('created_at');
