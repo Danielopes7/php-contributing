@@ -1,0 +1,45 @@
+#!/bin/sh
+# Exit on error.
+set -e
+
+# Checks if files matching a pattern have changed.
+check_changed_files() {
+    # Get the list of changed files between current branch and master.
+    changed_files=$(git diff --name-only master...HEAD)
+    
+    # Check each pattern against the changed files.
+    for pattern in "$@"; do
+        if echo "$changed_files" | grep -q "$pattern"; then
+            return 0 # Found a match.
+        fi
+    done
+    
+    return 1 # No matches found.
+}
+
+is_php_changed=false
+
+# Check for PHP changes.
+if check_changed_files "\.php$" "composer\.json$" "composer\.lock$" "phpstan\.neon$" "pint\.json$"; then
+    is_php_changed=true
+fi
+
+# If no relevant changes detected, exit early.
+if [ "$is_php_changed" = false ]; then
+    printf "\n✅ No PHP changes detected. Skipping checks.\n\n"
+    exit 0
+fi
+
+# Run PHP checks if needed.
+if [ "$is_php_changed" = true ]; then
+    printf "\n🔍 PHP changes detected. Running PHP checks...\n"
+    
+    printf "\n⏳ composer lint\n"
+    vendor/bin/pint --test
+    
+    printf "\n⏳ composer analyse\n"
+    vendor/bin/phpstan analyse --memory-limit 768M
+    
+fi
+
+printf "\n✅ pre-push OK\n\n"
