@@ -52,7 +52,9 @@
         ],
         "cs": "phpcs --standard=PSR12 app/",
         "cbf": "phpcbf --standard=PSR12 app/",
-        "phpstan": "phpstan analyse"
+        "stan": "php vendor/bin/phpstan analyse --memory-limit 768M --ansi",
+        "lint": "php vendor/bin/pint --test",
+        "fix": "vendor/bin/pint"
     },
     "extra": {
         "laravel": {

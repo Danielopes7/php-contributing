@@ -1,0 +1,12 @@
+parameters:
+    level: 1
+    paths:
+        - app
+        - database
+        - routes
+        - database
+        - public
+        - resources/views
+        - tests
+    excludePaths:
+        - vendor
