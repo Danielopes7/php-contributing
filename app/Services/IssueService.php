@@ -64,9 +64,7 @@ class IssueService
         } catch (\Exception $e) {
 
             Log::error('Error fetching issue from GitHub: '.$e->getMessage());
-
-            throw new \RuntimeException('Failed to fetch issue from GitHub', 0, $e);
-
+            
             return [];
         }
     }
