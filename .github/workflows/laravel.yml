@@ -5,8 +5,8 @@ on:
     branches: [ "master" ]
  
 jobs:
-  phpstan:
-    name: phpstan
+  static-analyse:
+    name: Static Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
