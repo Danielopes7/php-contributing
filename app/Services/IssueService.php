@@ -64,7 +64,7 @@ class IssueService
         } catch (\Exception $e) {
 
             Log::error('Error fetching issue from GitHub: '.$e->getMessage());
-            
+
             return [];
         }
     }
