@@ -87,10 +87,10 @@ class IssueService
         }
     }
 
-    public function execSchedule(array $issue)
+    public function execSchedule(array $issue): void
     {
         try {
-            return DB::transaction(function () use ($issue) {
+            DB::transaction(function () use ($issue) {
                 $this->deleteAll();
                 $this->repositoryService->deleteAll();
                 $this->labelService->deleteAll();
@@ -110,38 +110,29 @@ class IssueService
 
     protected function mountIssueData(array $issue): array
     {
-        try {
-            if (! empty($issue)) {
-                return [
-                    'url' => $issue['url'],
-                    'html_url' => $issue['html_url'],
-                    'issue_id' => $issue['id'],
-                    'number' => $issue['number'],
-                    'title' => $issue['title'],
-                    'user_login' => $issue['user']['login'],
-                    'user_avatar_url' => $issue['user']['avatar_url'],
-                    'state' => $issue['state'],
-                    'comments' => $issue['comments'],
-                    'created_at' => $issue['created_at'],
-                    'updated_at' => $issue['updated_at'],
-                    'closed_at' => $issue['closed_at'],
-                    'body' => $issue['body'],
-                ];
-            }
-        } catch (\Exception $e) {
-            Log::error('Error to mount issue array: '.$e->getMessage());
-
+        if (empty($issue)) {
             return [];
         }
+
+        return [
+            'url' => $issue['url'] ?? null,
+            'html_url' => $issue['html_url'] ?? null,
+            'issue_id' => $issue['id'] ?? null,
+            'number' => $issue['number'] ?? null,
+            'title' => $issue['title'] ?? null,
+            'user_login' => $issue['user']['login'] ?? null,
+            'user_avatar_url' => $issue['user']['avatar_url'] ?? null,
+            'state' => $issue['state'] ?? null,
+            'comments' => $issue['comments'] ?? 0,
+            'created_at' => $issue['created_at'] ?? null,
+            'updated_at' => $issue['updated_at'] ?? null,
+            'closed_at' => $issue['closed_at'] ?? null,
+            'body' => $issue['body'] ?? null,
+        ];
     }
 
     public function deleteAll(): void
     {
-        try {
-            Issue::query()->delete();
-            Log::info('All issue have been successfully deleted.');
-        } catch (\Exception $e) {
-            Log::error('Error deleting all issue: '.$e->getMessage());
-        }
+        Issue::query()->delete();
     }
 }

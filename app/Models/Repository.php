@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Repository extends Model
 {
@@ -15,8 +16,6 @@ class Repository extends Model
 
     /**
      * Get the issues for the repository.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function Issues(): hasMany
     {

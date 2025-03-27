@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Repository;
 use Github\Client;
-use Illuminate\Support\Facades\Log;
 
 class RepositoryService
 {
@@ -73,12 +72,7 @@ class RepositoryService
 
     public function deleteAll(): void
     {
-        try {
-            Repository::query()->delete();
-            Log::info('All repository have been successfully deleted.');
-        } catch (\Exception $e) {
-            Log::error('Error deleting all repository: '.$e->getMessage());
-        }
+        Repository::query()->delete();
     }
 
     public function metricsSizeProject(mixed $type_size)
